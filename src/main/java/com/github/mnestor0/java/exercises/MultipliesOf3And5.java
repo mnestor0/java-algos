@@ -1,4 +1,4 @@
-package com.github.mnestor0.java.algos;
+package com.github.mnestor0.java.exercises;
 
 /*
     Problem:

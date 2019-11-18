@@ -1,7 +1,8 @@
-package com.github.mnestor0.java.algos;
+package com.github.mnestor0.java.exercises;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.github.mnestor0.java.exercises.MultipliesOf3And5;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
