@@ -14,7 +14,8 @@ public class SelectionSort<T extends Comparable<T>> {
 
     public void sort(T[] toBeSorted) {
         for (int i = 0; i < toBeSorted.length - 1; i++) {
-            swap(toBeSorted, i, findMinIndex(toBeSorted, i));
+            int minOfSubArray = findMinIndex(toBeSorted, i);
+            swap(toBeSorted, i, minOfSubArray);
         }
     }
 

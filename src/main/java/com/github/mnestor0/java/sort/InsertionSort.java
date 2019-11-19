@@ -1,6 +1,6 @@
 package com.github.mnestor0.java.sort;
 
-import java.util.LinkedList;
+import java.util.Arrays;
 
 /*
     This sorting methods works as follows:
@@ -14,31 +14,22 @@ import java.util.LinkedList;
  */
 public class InsertionSort<T extends Comparable<T>> {
 
-    public void sort(T[] toBeSorted) {
-        T original;
-        for (int i = 0; i < toBeSorted.length; i++) {
-            for (int j = 0; j < i; j++) {
-                if (toBeSorted[i].compareTo(toBeSorted[j]) < 0) {
-                    original = toBeSorted[i];
-                    System.arraycopy(toBeSorted, j, toBeSorted, j + 1, i - j);
-                    toBeSorted[j] = original;
-                }
-            }
-        }
+    public static void main(String[] args) {
+        Integer[] array = {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 7, 8};
+        new InsertionSort<Integer>().sort(array);
+        System.out.println(Arrays.toString(array));
     }
 
-    public Object[] sortLinked(T[] array) {
-        if (array.length == 0 || array.length == 1) return array;
-        int newIndex = 0;
-        LinkedList<T> linkedList = new LinkedList<>();
-        for (T element : array) {
-            for (; newIndex < linkedList.size(); newIndex++) {
-                if (element.compareTo(linkedList.get(newIndex)) < 0) {
-                    break;
-                }
+    public void sort(T[] array) {
+        if (array.length == 0 || array.length == 1) return;
+        T original;
+        int i, j;
+        for (i = 1; i < array.length; i++) {
+            original = array[i];
+            for (j = i; j > 0 && array[j - 1].compareTo(original) > 0; j--) {
+                array[j] = array[j - 1];
             }
-            linkedList.add(newIndex, element);
+            array[j] = original;
         }
-        return linkedList.toArray();
     }
 }

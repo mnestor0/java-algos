@@ -19,10 +19,6 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.1")
 }
 
-application {
-    mainClassName = "com.github.mnestor0.java.algos.App"
-}
-
 val test by tasks.getting(Test::class) {
     // Use junit platform for unit tests
     useJUnitPlatform()
