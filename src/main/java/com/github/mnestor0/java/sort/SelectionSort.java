@@ -10,7 +10,7 @@ package com.github.mnestor0.java.sort;
     Memory complexity is O(1).
 
  */
-public class SelectionSort<T extends Comparable<T>> {
+public class SelectionSort<T extends Comparable<T>> implements Sort<T> {
 
     public void sort(T[] toBeSorted) {
         for (int i = 0; i < toBeSorted.length - 1; i++) {

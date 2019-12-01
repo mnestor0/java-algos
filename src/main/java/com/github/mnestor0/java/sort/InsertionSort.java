@@ -1,7 +1,5 @@
 package com.github.mnestor0.java.sort;
 
-import java.util.Arrays;
-
 /*
     This sorting methods works as follows:
     1. Take every element of the array (n).
@@ -12,13 +10,7 @@ import java.util.Arrays;
     Memory complexity is O(1).
 
  */
-public class InsertionSort<T extends Comparable<T>> {
-
-    public static void main(String[] args) {
-        Integer[] array = {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 7, 8};
-        new InsertionSort<Integer>().sort(array);
-        System.out.println(Arrays.toString(array));
-    }
+public class InsertionSort<T extends Comparable<T>> implements Sort<T> {
 
     public void sort(T[] array) {
         if (array.length == 0 || array.length == 1) return;

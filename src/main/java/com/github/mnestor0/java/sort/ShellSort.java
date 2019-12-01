@@ -18,7 +18,7 @@ import java.util.Arrays;
     Knuth's gaps are integers and:
     (3^(k + 1) - 1) / 2 / 3 - (3^k - 1) / 2 = (3^k/2 - 1/6) - (3^k/2 - 1/2) = -1/6 + 1/2 = 1/3
  */
-public class ShellSort<T extends Comparable<T>> {
+public class ShellSort<T extends Comparable<T>> implements Sort<T> {
 
     public static void main(String[] args) {
         Integer[] array = {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 7, 8};
