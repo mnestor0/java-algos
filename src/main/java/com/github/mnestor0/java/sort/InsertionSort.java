@@ -24,4 +24,17 @@ public class InsertionSort<T extends Comparable<T>> implements Sort<T> {
             array[j] = original;
         }
     }
+
+    public void sort(T[] array, int start, int end) {
+        if (array.length == 0 || array.length == 1) return;
+        T original;
+        int i, j;
+        for (i = start + 1; i <= end; i++) {
+            original = array[i];
+            for (j = i; j > start && array[j - 1].compareTo(original) > 0; j--) {
+                array[j] = array[j - 1];
+            }
+            array[j] = original;
+        }
+    }
 }

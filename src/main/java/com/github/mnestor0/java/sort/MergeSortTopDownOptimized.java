@@ -6,6 +6,8 @@ package com.github.mnestor0.java.sort;
  */
 public class MergeSortTopDownOptimized<T extends Comparable<T>> extends MergeSortAbstract<T> {
 
+    private InsertionSort<T> insertionSort = new InsertionSort<>();
+
     public void sort(T[] array) {
         T[] workArray = array.clone();
         if (array.length == 0 || array.length == 1) return;
@@ -21,11 +23,17 @@ public class MergeSortTopDownOptimized<T extends Comparable<T>> extends MergeSor
         }
         int subMiddle = (subLast - subFirst) / 2 + subFirst;
         if (flip) {
+            // Optimization - use original array as work array and vice versa, back and forth and avoid copying elements.
             T[] swap = array;
             array = workArray;
             workArray = swap;
         }
         flip = !flip;
+        if (subLength < 10) {
+            // Optimization - fallback to insertion sort for small subarray
+            insertionSort.sort(array, subFirst, subLast);
+            return;
+        }
         sort(array, workArray, subFirst, subMiddle, flip);
         sort(array, workArray, subMiddle + 1, subLast, flip);
         merge(array, workArray, subFirst, subMiddle + 1, subLast);
