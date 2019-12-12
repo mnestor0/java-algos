@@ -20,7 +20,8 @@ class SortTest {
             new MergeSortBottomUp<>(),
             new SelectionSort<>(),
             new ShellSort<>(),
-            new QuickSort<>());
+            new QuickSort<>(),
+            new HeapSort<>());
 
     @ParameterizedTest
     @MethodSource("testData")

@@ -9,11 +9,12 @@ public class SortingAlgorithms {
         return Arrays.asList(
 //                new BubbleSort<>(),
 //                new InsertionSort<>(),
-                new MergeSortTopDown<>(),
-                new MergeSortTopDownOptimized<>(),
-                new MergeSortBottomUp<>(),
 //                new SelectionSort<>(),
-                new ShellSort<>(),
-                new QuickSort<>());
+//                new ShellSort<>(),
+//                new MergeSortTopDown<>(),
+//                new MergeSortBottomUp<>(),
+                new MergeSortTopDownOptimized<>(),
+                new QuickSort<>(),
+                new HeapSort<>());
     }
 }
