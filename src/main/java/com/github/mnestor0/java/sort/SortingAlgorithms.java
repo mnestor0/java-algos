@@ -5,16 +5,16 @@ import java.util.List;
 
 public class SortingAlgorithms {
 
-    public static <T extends Comparable<T>> List<Sort<T>> get() {
+    public static List<Sort> get() {
         return Arrays.asList(
-//                new BubbleSort<>(),
-//                new InsertionSort<>(),
-//                new SelectionSort<>(),
-//                new ShellSort<>(),
-//                new MergeSortTopDown<>(),
-//                new MergeSortBottomUp<>(),
-                new MergeSortTopDownOptimized<>(),
-                new QuickSort<>(),
-                new HeapSort<>());
+//                new BubbleSort(),
+//                new InsertionSort(),
+//                new SelectionSort(),
+//                new ShellSort(),
+//                new MergeSortTopDown(),
+//                new MergeSortBottomUp(),
+                new MergeSortTopDownOptimized(),
+                new QuickSort(),
+                new HeapSort());
     }
 }

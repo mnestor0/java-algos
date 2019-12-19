@@ -1,6 +1,7 @@
 package com.github.mnestor0.java.sort;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /*
     Merge sort is an algorithm that is an example of divide and conquer paradigm.
@@ -25,18 +26,18 @@ import java.util.Arrays;
         With this approach, in a bit of mindbending recursive trickery, we can arrange the recursive calls
         such that the computation switches the roles of the input array and the auxiliary array at each level.
  */
-public abstract class MergeSortAbstract<T extends Comparable<T>> implements Sort<T> {
+public abstract class MergeSortAbstract implements Sort {
 
-    protected void merge(T[] array, T[] workArray, int aFirst, int bFirst, int bLast) {
+    protected <T> void merge(T[] array, T[] workArray, int aFirst, int bFirst, int bLast, Comparator<T> comparator) {
         // Next condition statement is optimization
-        boolean setAlreadySorted = bFirst < array.length && array[bFirst - 1].compareTo(array[bFirst]) <= 0;
+        boolean setAlreadySorted = bFirst < array.length && comparator.compare(array[bFirst - 1], array[bFirst]) <= 0;
         if (setAlreadySorted) {
             return;
         }
         int ai = aFirst, bi = bFirst;
         int length = bLast - aFirst + 1;
         for(int i = aFirst; i < (aFirst + length); i++) {
-            if (bi > bLast || (ai < bFirst && workArray[ai].compareTo(workArray[bi]) <= 0)) {
+            if (bi > bLast || (ai < bFirst && comparator.compare(workArray[ai], workArray[bi]) <= 0)) {
                 array[i] = workArray[ai];
                 ai += 1;
             } else {

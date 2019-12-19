@@ -1,22 +1,24 @@
 package com.github.mnestor0.java.sort;
 
+import java.util.Comparator;
+
 /*
     Instead of copying contents from workArray to array, use them interchangeably.
     See base class for more info.
  */
-public class MergeSortTopDownOptimized<T extends Comparable<T>> extends MergeSortAbstract<T> {
+public class MergeSortTopDownOptimized extends MergeSortAbstract {
 
-    private InsertionSort<T> insertionSort = new InsertionSort<>();
+    private InsertionSort insertionSort = new InsertionSort();
 
-    public void sort(T[] array) {
+    public <T> void sort(T[] array, Comparator<T> comparator) {
         T[] workArray = array.clone();
         if (array.length == 0 || array.length == 1) return;
         int subFirst = 0;
         int subLast = array.length - 1;
-        sort(array, workArray, subFirst, subLast, false);
+        sort(array, workArray, subFirst, subLast, false, comparator);
     }
 
-    private void sort(T[] array, T[] workArray, int subFirst, int subLast, boolean flip) {
+    private <T> void sort(T[] array, T[] workArray, int subFirst, int subLast, boolean flip, Comparator<T> comparator) {
         int subLength = subLast - subFirst + 1;
         if (subLength == 1) {
             return;
@@ -31,11 +33,11 @@ public class MergeSortTopDownOptimized<T extends Comparable<T>> extends MergeSor
         flip = !flip;
         if (subLength < 10) {
             // Optimization - fallback to insertion sort for small subarray
-            insertionSort.sort(array, subFirst, subLast);
+            insertionSort.sort(array, subFirst, subLast, comparator);
             return;
         }
-        sort(array, workArray, subFirst, subMiddle, flip);
-        sort(array, workArray, subMiddle + 1, subLast, flip);
-        merge(array, workArray, subFirst, subMiddle + 1, subLast);
+        sort(array, workArray, subFirst, subMiddle, flip, comparator);
+        sort(array, workArray, subMiddle + 1, subLast, flip, comparator);
+        merge(array, workArray, subFirst, subMiddle + 1, subLast, comparator);
     }
 }

@@ -1,5 +1,12 @@
 package com.github.mnestor0.java.sort;
 
-public interface Sort<T extends Comparable<T>> {
-    void sort(T[] array);
+import java.util.Comparator;
+
+public interface Sort {
+
+    default <E extends Comparable<E>> void sort(E[] array) {
+        sort(array, Comparable::compareTo);
+    }
+
+    <T> void sort(T[] array, Comparator<T> comparator);
 }

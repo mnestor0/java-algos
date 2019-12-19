@@ -12,23 +12,23 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class SortTest {
 
-    private List<Sort<Integer>> sortList = Arrays.asList(
-            new BubbleSort<>(),
-            new InsertionSort<>(),
-            new MergeSortTopDown<>(),
-            new MergeSortTopDownOptimized<>(),
-            new MergeSortBottomUp<>(),
-            new SelectionSort<>(),
-            new ShellSort<>(),
-            new QuickSort<>(),
-            new HeapSort<>());
+    private List<Sort> sortList = Arrays.asList(
+            new BubbleSort(),
+            new InsertionSort(),
+            new MergeSortTopDown(),
+            new MergeSortTopDownOptimized(),
+            new MergeSortBottomUp(),
+            new SelectionSort(),
+            new ShellSort(),
+            new QuickSort(),
+            new HeapSort());
 
     @ParameterizedTest
     @MethodSource("testData")
     void testSort(Integer[] arrayToBeSorted) {
         Integer[] expectedArray = arrayToBeSorted.clone();
         Arrays.sort(expectedArray);
-        for (Sort<Integer> sort : sortList) {
+        for (Sort sort : sortList) {
             sort.sort(arrayToBeSorted);
             assertArrayEquals(expectedArray, arrayToBeSorted, String.format("%s, %s",
                     Arrays.toString(expectedArray), Arrays.toString(arrayToBeSorted)));

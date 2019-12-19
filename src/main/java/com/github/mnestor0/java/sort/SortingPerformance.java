@@ -7,11 +7,11 @@ import java.util.Random;
 public class SortingPerformance {
 
     public static void main(String[] args) {
-        List<Sort<Integer>> algorithms = SortingAlgorithms.get();
+        List<Sort> algorithms = SortingAlgorithms.get();
         algorithms.parallelStream().forEach(SortingPerformance::testPerformance);
     }
 
-    private static void testPerformance(Sort<Integer> algorithm) {
+    private static void testPerformance(Sort algorithm) {
         long averageTime = 0;
         for (int i = 0; i < 100; i++) {
             Integer[] array = createArray();

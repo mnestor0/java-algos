@@ -1,5 +1,7 @@
 package com.github.mnestor0.java.sort;
 
+import java.util.Comparator;
+
 /*
     This sorting methods works as follows:
     1. Take every element of the array (n).
@@ -10,28 +12,28 @@ package com.github.mnestor0.java.sort;
     Memory complexity is O(1).
 
  */
-public class InsertionSort<T extends Comparable<T>> implements Sort<T> {
+public class InsertionSort implements Sort {
 
-    public void sort(T[] array) {
+    public <T> void sort(T[] array, Comparator<T> comparator) {
         if (array.length == 0 || array.length == 1) return;
         T original;
         int i, j;
         for (i = 1; i < array.length; i++) {
             original = array[i];
-            for (j = i; j > 0 && array[j - 1].compareTo(original) > 0; j--) {
+            for (j = i; j > 0 && comparator.compare(array[j - 1], original) > 0; j--) {
                 array[j] = array[j - 1];
             }
             array[j] = original;
         }
     }
 
-    public void sort(T[] array, int start, int end) {
+    public <T> void sort(T[] array, int start, int end, Comparator<T> comparator) {
         if (array.length == 0 || array.length == 1) return;
         T original;
         int i, j;
         for (i = start + 1; i <= end; i++) {
             original = array[i];
-            for (j = i; j > start && array[j - 1].compareTo(original) > 0; j--) {
+            for (j = i; j > start && comparator.compare(array[j - 1], original) > 0; j--) {
                 array[j] = array[j - 1];
             }
             array[j] = original;

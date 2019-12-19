@@ -1,5 +1,9 @@
 package com.github.mnestor0.java.sort;
 
+import java.util.Comparator;
+
+import static com.github.mnestor0.java.sort.SortUtils.swap;
+
 /*
     This sorting methods works as follows:
     1. Find the smallest element, put it in the first index of the array.
@@ -10,28 +14,22 @@ package com.github.mnestor0.java.sort;
     Memory complexity is O(1).
 
  */
-public class SelectionSort<T extends Comparable<T>> implements Sort<T> {
+public class SelectionSort implements Sort {
 
-    public void sort(T[] toBeSorted) {
+    public <T> void sort(T[] toBeSorted, Comparator<T> comparator) {
         for (int i = 0; i < toBeSorted.length - 1; i++) {
-            int minOfSubArray = findMinIndex(toBeSorted, i);
+            int minOfSubArray = findMinIndex(toBeSorted, i, comparator);
             swap(toBeSorted, i, minOfSubArray);
         }
     }
 
-    private int findMinIndex(T[] array, int from) {
+    private <T> int findMinIndex(T[] array, int from, Comparator<T> comparator) {
         int min = from;
         for (int i = from; i < array.length; i++) {
-            if (array[i].compareTo(array[min]) < 0) {
+            if (comparator.compare(array[i], array[min]) < 0) {
                 min = i;
             }
         }
         return min;
-    }
-
-    private void swap(T[] array, int index1, int index2) {
-        T swap = array[index1];
-        array[index1] = array[index2];
-        array[index2] = swap;
     }
 }

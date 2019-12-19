@@ -16,24 +16,27 @@ package com.github.mnestor0.java.sort;
         that all elements after last swap in given are already sorted.
  */
 
-public class BubbleSort<T extends Comparable<T>> implements Sort<T> {
+import java.util.Comparator;
 
-    public void sort(T[] array) {
+import static com.github.mnestor0.java.sort.SortUtils.swap;
+
+public class BubbleSort implements Sort {
+
+    @Override
+    public <T> void sort(T[] array, Comparator<T> comparator) {
         boolean swapped;
-        T swap;
         int i;
         int lastSwapped = array.length - 1;
         do {
             swapped = false;
             for (i = 0; i < lastSwapped; i++) {
-                if (array[i].compareTo(array[i + 1]) > 0) {
-                    swap = array[i];
-                    array[i] = array[i + 1];
-                    array[i + 1] = swap;
+                if (comparator.compare(array[i], array[i + 1]) > 0) {
+                    swap(array, i, i + 1);
                     swapped = true;
                 }
             }
             lastSwapped = i;
         } while (swapped);
     }
+
 }
