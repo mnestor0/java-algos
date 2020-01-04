@@ -11,14 +11,21 @@ import java.util.Set;
     Bonus: Can you do this in one pass?
 
     Solution:
-    A HashSet can be used for this. Add all elements to a HashSet.
-    Iterate over HashSet and check if desiredSum - currentValue exists in the Set.
+    A HashSet can be used for this:
+      1. Iterate over array
+      2. Check if complementary number exists in a hashset. If it does return true.
+      3. If not, add current number to the hashset
  */
 public class DoTwoNumberAddUpToK {
 
     public boolean addUp(Integer[] array, int desiredSum) {
-        if (array.length < 2) return false;
-        Set<Integer> hashSet = new HashSet<>(Arrays.asList(array));
-        return hashSet.stream().anyMatch(element -> hashSet.contains(desiredSum - element));
+        Set<Integer> numbersSeen = new HashSet<>();
+        for (Integer integer : array) {
+            if (numbersSeen.contains(desiredSum - integer)) {
+                return true;
+            }
+            numbersSeen.add(integer);
+        }
+        return false;
     }
 }
