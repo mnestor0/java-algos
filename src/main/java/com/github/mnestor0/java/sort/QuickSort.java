@@ -2,7 +2,7 @@ package com.github.mnestor0.java.sort;
 
 import java.util.Comparator;
 
-import static com.github.mnestor0.java.sort.SortUtils.swap;
+import static com.github.mnestor0.java.util.ArrayUtils.swap;
 
 /*
     Quicksort is an unstable algorithm, which is based on divide and conquer paradigm.

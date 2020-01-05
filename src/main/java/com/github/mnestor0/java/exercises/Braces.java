@@ -27,7 +27,7 @@ public class Braces {
             return -1;
         }
         char currentBrace = chars[i];
-        if (isMissing(currentBrace) || isClosingBrace(currentBrace)) {
+        if (isNotSupported(currentBrace) || isClosingBrace(currentBrace)) {
             return -1;
         }
         int matchingBraceIndex = i + 1;
@@ -44,7 +44,7 @@ public class Braces {
         return -1;
     }
 
-    private boolean isMissing(char brace) {
+    private boolean isNotSupported(char brace) {
         return BRACES.indexOf(brace) == -1;
     }
 

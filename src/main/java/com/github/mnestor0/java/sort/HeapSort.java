@@ -2,7 +2,7 @@ package com.github.mnestor0.java.sort;
 
 import java.util.Comparator;
 
-import static com.github.mnestor0.java.sort.SortUtils.swap;
+import static com.github.mnestor0.java.util.ArrayUtils.swap;
 
 /*
     Priority queue is a data structure, which provides two operations, removeMaximum() and insert().
