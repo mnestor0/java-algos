@@ -14,7 +14,8 @@ package com.github.mnestor0.java.exercises;
    1   1
 
    Solution:
-   Recursive traversal, time complexity O(n), memory O(n)
+   Recursive traversal, time complexity O(n), memory O(n).
+   Not stacksafe.
  */
 public class UnivalSubtrees {
 
