@@ -5,17 +5,22 @@ package com.github.mnestor0.java.unionfind;
     This is an easy implementation that allows for fast union operations.
     It is possible due to the fact that each element points to an element in the same group, not necessarily the root.
     The root points to itself.
+    To help balance the trees during unions, the size of each tree is stored. During union always the smaller
+    tree is connected to the larger tree.
  */
-public class QuickUnion implements UnionFind {
+public class WeightedQuickUnion implements UnionFind {
 
     private final int[] sets;
+    private final int[] sizes;
     private int count;
 
-    public QuickUnion(int n) {
+    public WeightedQuickUnion(int n) {
         sets = new int[n];
+        sizes = new int[n];
         count = n;
         for (int i = 0; i < n; i++) {
             sets[i] = i;
+            sizes[i] = 1;
         }
     }
 
@@ -24,8 +29,16 @@ public class QuickUnion implements UnionFind {
         int pRoot = find(p);
         int qRoot = find(q);
         if (pRoot == qRoot) return;
+        int pSize = sizes[pRoot];
+        int qSize = sizes[qRoot];
+        if (pSize < qSize) {
+            sets[pRoot] = qRoot;
+            sizes[qRoot] += pSize;
+        } else {
+            sets[qRoot] = pRoot;
+            sizes[pRoot] += qSize;
+        }
         count--;
-        sets[pRoot] = qRoot;
     }
 
     @Override

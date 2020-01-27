@@ -17,6 +17,8 @@ class UnionFindTest {
         implementations = new ArrayList<>();
         implementations.add(new QuickFind(n));
         implementations.add(new QuickUnion(n));
+        implementations.add(new WeightedQuickUnion(n));
+        implementations.add(new WeightedQuickUnionWithPathCompression(n));
     }
 
     @Test
