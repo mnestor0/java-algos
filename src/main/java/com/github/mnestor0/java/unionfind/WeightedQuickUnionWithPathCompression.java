@@ -49,8 +49,12 @@ public class WeightedQuickUnionWithPathCompression implements UnionFind {
             root = sets[root];
         }
         // Path compression
-        if (p != root) {
-            sets[p] = root;
+        int current = p;
+        int next;
+        while (current != root) {
+            next = sets[current];
+            sets[current] = root;
+            current = next;
         }
         return root;
     }
